@@ -14,19 +14,40 @@
 
 // This way, you don't actually manipulate process.argv, but rather create a new array based on the values from the third index and on.
 
-const profileDataArgs = process.argv.slice(2, process.argv.length); // takes the elements entered into the terminal and makes them into the array
-console.log(profileDataArgs); // displays the array
+
+///// FIRST SECTION ORIGIN
+
+// const profileDataArgs = process.argv.slice(2, process.argv.length); // takes the elements entered into the terminal and makes them into the array
+// console.log(profileDataArgs); // displays the array
 
 
-// const printProfileData = (profileDataArr) => {
-//     console.log(profileDataArr);
+// // Notice the lack of parentheses around the `profileDataArr` parameter?
+// const printProfileData = profileDataArr => {
+//     // This...
+//   for (let i = 0; i < profileDataArr.length; i += 1) {
+//     console.log(profileDataArr[i]);
+//   }
+
+//   console.log('================');
+
+//   // Is the same as this...
+//   profileDataArr.forEach((profileItem) => {
+//     console.log(profileItem)
+//   });
 // };
 
+//   printProfileData(profileDataArgs); // calls the function, which pulls the data from the first array variable, then logs it
+
+// // var is function scoped and let is block scoped
+
+//////////////////////
 
 
-// Notice the lack of parentheses around the `profileDataArr` parameter?
+
+const profileDataArgs = process.argv.slice(2);
+
 const printProfileData = profileDataArr => {
-    // This...
+  // This...
   for (let i = 0; i < profileDataArr.length; i += 1) {
     console.log(profileDataArr[i]);
   }
@@ -34,12 +55,7 @@ const printProfileData = profileDataArr => {
   console.log('================');
 
   // Is the same as this...
-  profileDataArr.forEach((profileItem) => {
-    console.log(profileItem)
-  });
+  profileDataArr.forEach(profileItem => console.log(profileItem));
 };
 
-
-  printProfileData(profileDataArgs); // calls the function, which pulls the data from the first array variable, then logs it
-
-// var is function scoped and let is block scoped
+printProfileData(profileDataArgs);
