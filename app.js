@@ -65,38 +65,61 @@
 // const profileDataArgs = process.argv.slice(2);
 //--------------------
 
-const profileDataArgs = process.argv.slice(2, process.argv.length);
+// const fs = require('fs');
 
-const [name1, github] = profileDataArgs; // replaces the two expressions below (assignment destructuring)
-// const name1 = profileDataArgs[0];
-// const github = profileDataArgs[1];
+// const profileDataArgs = process.argv.slice(2, process.argv.length);
 
-// const generatePage = (userName, githubName) => {
+// const [name1, github] = profileDataArgs; // replaces the two expressions below (assignment destructuring) which is an ES6 feature
+// // const name1 = profileDataArgs[0];
+// // const github = profileDataArgs[1];
+
+// // const generatePage = (userName, githubName) => {
+// //   return `
+// //   Name: ${userName}
+// //   Github: ${githubName}
+// //   `;
+// // };
+
+// const generatePage = (name1, github) => {
 //   return `
-//   Name: ${userName}
-//   Github: ${githubName}
+//   <!DOCTYPE html> 
+//   <html lang="en"> 
+//   <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+//     <title>Portfolio Demo</title>
+//   </head>
+
+//   <body>
+//     <h1>${name1}</h1>
+//     <h2><a href="https://github.com/${github}">Github</a></h2>
+//   </body>
+//   </html>
 //   `;
+  
 // };
 
-const generatePage = (name1, github) => {
-  return `
-  <!DOCTYPE html> 
-  <html lang="en"> 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Portfolio Demo</title>
-  </head>
+// // console.log(name1, github);
+// // console.log(generatePage(name1, github));
 
-  <body>
-    <h1>${name1}</h1>
-    <h2><a href="https://github.com/${github}">Github</a></h2>
-  </body>
-  </html>
-  `;
-  
-};
+// fs.writeFile('index.html', generatePage(name1, github), err => {
+//   if (err) throw err;
 
-console.log(name1, github);
-console.log(generatePage(name1, github));
+//   console.log('Portfolio complete! Check out index.html to see the output!');
+// });
+
+const fs = require('fs');
+const generatePage = require('./src/page-template.js');
+
+const profileDataArgs = process.argv.slice(2);
+
+const [name, github] = profileDataArgs;
+
+// page-template.js contains the template literal for the webpage where user input is added -- i.e. the generatePage function
+
+fs.writeFile('./index.html', generatePage(name, github), err => {
+  if (err) throw new Error(err);
+
+  console.log('Portfolio complete! Check out index.html to see the output!');
+});
