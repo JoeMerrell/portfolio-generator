@@ -167,7 +167,7 @@ Add a New Project
 `);
 
   // If there's no 'projects' array property, create one
-  if (!portfolioData.projects) {
+  if (!portfolioData.projects) {  // .projects is an array in the portfolioData array
     portfolioData.projects = [];
   }
   return inquirer
@@ -252,6 +252,8 @@ promptUser()
     // });
   });
 
+
+  
 // From the module 9.3.5: Notice that the function returns a running of inquire.prompt(), thus returning what it returns, which is a Promise. Just like fetch(), which we covered previously, the Promise will resolve with a .then() method.
 
 // Continued: So, here we're calling a function that returns the result of inquire.prompt, which is a Promise. We therefore append the .then() method to the function call, since it returns a Promise, and we put into .then() whatever we wish to take place after the Promise is resolved.
