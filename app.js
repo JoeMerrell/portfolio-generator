@@ -155,6 +155,18 @@ const promptUser = () => {
       name: 'about',
       message: 'Provide some information about yourself:',
       when: ({ confirmAbout }) => confirmAbout
+      // this arrow function for when evaluates whether the user answered yes to the previous question then prompts the question if the answer was yes.
+
+      // in traditional format the function is:
+      
+      // when: ({ confirmAbout }) => {
+        // if (confirmAbout) {
+        //   return true;
+        // } else {
+        //   return false;
+        // }
+  }
+
     }
   ]);
 };
@@ -253,7 +265,7 @@ promptUser()
   });
 
 
-  
+
 // From the module 9.3.5: Notice that the function returns a running of inquire.prompt(), thus returning what it returns, which is a Promise. Just like fetch(), which we covered previously, the Promise will resolve with a .then() method.
 
 // Continued: So, here we're calling a function that returns the result of inquire.prompt, which is a Promise. We therefore append the .then() method to the function call, since it returns a Promise, and we put into .then() whatever we wish to take place after the Promise is resolved.
